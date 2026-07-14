@@ -458,6 +458,10 @@ section {
     .section-hero__buttons .btn {
         width: 100%;
     }
+
+    .btn--header-cta{
+        font-size: 0.5rem;
+    }
 }
 
 /* ==========================================================================
