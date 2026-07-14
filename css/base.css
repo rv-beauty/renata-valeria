@@ -1,0 +1,74 @@
+/* ==========================================================================
+   RESET & VARIÁVEIS GLOBAIS
+   ========================================================================== */
+
+:root {
+    /* Paleta de Cores baseada em screen.jpg */
+    --color-bg: #FFFFFF;
+    --color-surface: #FAFAFA;
+    --color-surface-card: #FFFFFF;
+    --color-text-main: #1A1A1A;
+    --color-text-muted: #71717A;
+    --color-primary-accent: #D4A373; /* Tom marrom/dourado suave do Hero */
+    --color-dark-accent: #452E1B;    /* Tom marrom escuro da Oferta Especial */
+    --color-border: #E4E4E7;
+
+    /* Tipografia */
+    --font-titles: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base para cálculo de rem (1rem = 16px) */
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button, input {
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+/* Utilitários Globais de Texto */
+.text-center { text-align: center; }
+.section-title {
+    font-family: var(--font-titles);
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+.section-subtitle {
+    color: var(--color-text-muted);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

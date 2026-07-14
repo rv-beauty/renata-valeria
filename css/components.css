@@ -1,0 +1,231 @@
+/* ==========================================================================
+   COMPONENTES REUTILIZÁVEIS (BEM)
+   ========================================================================== */
+
+/* --- Botões Nativos e Modificadores --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.btn--hero-primary {
+    background-color: var(--color-primary-accent);
+    color: #FFFFFF;
+}
+.btn--hero-primary:hover {
+    background-color: var(--color-dark-accent);
+}
+
+.btn--hero-secondary {
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    margin-left: 1rem;
+}
+.btn--hero-secondary:hover {
+    background-color: #FFFFFF;
+    color: var(--color-text-main);
+}
+
+.btn--header-cta {
+    background-color: var(--color-dark-accent);
+    color: #FFFFFF;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.813rem;
+}
+
+.btn--offer-cta {
+    background-color: var(--color-dark-accent);
+    color: #FFFFFF;
+    padding: 1rem 2.5rem;
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+/* --- Cards de Produtos (Vitrine) --- */
+.product-card {
+    background-color: var(--color-surface-card);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.product-card__image-holder {
+    position: relative;
+    background-color: #F4F4F5;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.product-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card__brand-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.25rem 0.7rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.product-card__details {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-card__name {
+    font-family: var(--font-titles);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.product-card__price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: 1.25rem;
+}
+
+.btn-add-to-order {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.btn-add-to-order:hover {
+    color: var(--color-primary-accent);
+}
+
+/* --- Cards de Depoimentos (Reviews) --- */
+.testimonial-card {
+    background-color: var(--color-surface-card);
+    padding: 2.5rem;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card__quote-icon {
+    font-family: var(--font-titles);
+    font-size: 3rem;
+    color: var(--color-primary-accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card__text {
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.testimonial-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.testimonial-card__name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.938rem;
+}
+
+.testimonial-card__handle {
+    display: block;
+    font-size: 0.813rem;
+    color: var(--color-text-muted);
+}
+
+.testimonial-card__stars {
+    color: var(--color-primary-accent);
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+}
+
+/* --- Botão Flutuante do WhatsApp --- */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.floating-whatsapp::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #25D366;
+    border-radius: 50%;
+    z-index: -1;
+    animation: whatsappPulse 2s infinite;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+}
+
+.floating-whatsapp img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+}
+
+@keyframes whatsappPulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

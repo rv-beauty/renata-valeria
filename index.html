@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renata Valéria | Curadoria Exclusiva de Beleza</title>
+    <meta name="description"
+        content="Descubra uma seleção premium das suas marcas favoritas em um único lugar. Atendimento personalizado para realçar a sua essência.">
+
+    <!-- Google Fonts carregando fontes equivalentes ao design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+       1. HEADER (MENU)
+       ========================================== -->
+    <header class="site-header">
+        <div class="site-header__container">
+
+            <!-- Nome da Marca/Logo igual à imagem -->
+            <a href="#" class="site-header__logo">
+                <img src="images/logos/RV-no-background.png" class="logo__img" alt="Renata Valéria Logo">
+            </a>
+
+            <!-- Menu de Navegação -->
+            <nav class="site-navigation">
+                <ul class="site-navigation__list">
+                    <li class="site-navigation__item"><a href="#marcas" class="site-navigation__link">Marcas</a></li>
+                    <li class="site-navigation__item"><a href="#vitrine" class="site-navigation__link">Vitrine</a></li>
+                    <li class="site-navigation__item"><a href="#depoimentos"
+                            class="site-navigation__link">Depoimentos</a></li>
+                    <li class="site-navigation__item"><a href="#ofertas" class="site-navigation__link">Ofertas</a></li>
+                    <li class="site-navigation__item"><a href="#sobre-mim" class="site-navigation__link">Consultora</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Ações do lado direito do Menu -->
+            <div class="site-header__actions">
+                <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20fazer%20um%20pedido!"
+                    class="btn btn--header-cta" target="_blank" rel="noopener noreferrer">Fazer Pedido</a>
+                <button class="site-header__toggle" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-content">
+
+        <!-- ==========================================
+         2. HERO (PAINEL PRINCIPAL COM IMAGEM DE FUNDO)
+         ========================================== -->
+        <section class="section-hero">
+            <div class="section-hero__container">
+                <div class="section-hero__content">
+                    <h1 class="section-hero__title">Sua beleza, nossa curadoria exclusiva</h1>
+                    <p class="section-hero__subtitle">Descubra uma seleção premium das suas marcas favoritas em um único
+                        lugar. Atendimento personalizado para realçar a sua essência.</p>
+
+                    <div class="section-hero__buttons">
+                        <a href="#vitrine" class="btn btn--hero-primary">Ver Catálogo</a>
+                        <a href="https://wa.me/5500000000000?text=Olá,%20quero%20falar%20com%20uma%20consultora!"
+                            class="btn btn--hero-secondary">Falar com Consultora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+         3. BRAND SHOWCASE (REORGANIZADO CONFORME SCREEN.JPG)
+         ========================================== -->
+        <section id="marcas" class="section-brands">
+            <div class="section-brands__container">
+                <div class="brand-list">
+                    <div class="brand-grid">
+                        <div class="brand-grid__item" data-brand-filter="boticario">
+                            <img src="images/logos/oBoticario.svg" alt="Logo O Boticário" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="eudora">
+                            <img src="images/logos/Eudora.svg" alt="Logo Eudora" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="oui">
+                            <img src="images/logos/OUI.svg" alt="Logo O.U.i" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="qdb">
+                            <img src="images/logos/QDB.svg" alt="Logo Quem Disse Berenice" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="natura">
+                            <img src="images/logos/Natura.svg" alt="Logo Natura" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="avon">
+                            <img src="images/logos/Avon.svg" alt="Logo Avon" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="marykay">
+                            <img src="images/logos/MaryKay.svg" alt="Logo Mary Kay" class="brand-grid__logo">
+                        </div>
+                        <div class="brand-grid__item" data-brand-filter="racco">
+                            <img src="images/logos/Racco.webp" alt="Logo Racco" class="brand-grid__logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+         4. VITRINE PREMIUM (TEXTOS E PREÇOS IGUAIS AO DESIGN)
+         ========================================== -->
+        <section id="vitrine" class="section-showcase">
+            <div class="section-showcase__container">
+
+                <div class="section-showcase__topbar">
+                    <div class="section-showcase__titles">
+                        <span class="section-showcase__tag">Destaques</span>
+                        <h2 class="section-title">Os Mais Queridos</h2>
+                    </div>
+                    <!-- <a href="#" class="link-see-all">Ver todos &rarr;</a> -->
+                </div>
+
+                <div class="product-grid">
+
+                    <!-- Produto 1: L'Amour 21 -->
+                    <article class="product-card" data-brand="oui">
+                        <div class="product-card__image-holder">
+                            <span class="product-card__brand-badge">O.U.i</span>
+                            <img src="images/products/lamour-21.jpg" alt="Perfume L'Amour 21" class="product-card__img"
+                                loading="lazy">
+                        </div>
+                        <div class="product-card__details">
+                            <h3 class="product-card__name">L'Amour 21</h3>
+                            <!-- <p class="product-card__price">R$ 319,00</p>
+                            <button class="btn-add-to-order">Pedir no WhatsApp <span>&rarr;</span></button> -->
+                        </div>
+                    </article>
+
+                    <!-- Produto 2: Sérum Preenchedor -->
+                    <article class="product-card" data-brand="natura">
+                        <div class="product-card__image-holder">
+                            <span class="product-card__brand-badge">Natura Chronos</span>
+                            <img src="images/products/serum-preenchedor.jpg" alt="Sérum Preenchedor Natura Chronos"
+                                class="product-card__img" loading="lazy">
+                        </div>
+                        <div class="product-card__details">
+                            <h3 class="product-card__name">Sérum Preenchedor</h3>
+                            <!-- <p class="product-card__price">R$ 179,90</p>
+                            <button class="btn-add-to-order">Pedir no WhatsApp <span>&rarr;</span></button> -->
+                        </div>
+                    </article>
+
+                    <!-- Produto 3: Paleta de Sombras -->
+                    <article class="product-card" data-brand="boticario">
+                        <div class="product-card__image-holder">
+                            <span class="product-card__brand-badge">Boticário</span>
+                            <img src="images/products/paleta-sombras.jpg" alt="Paleta de Sombras O Boticário Make B."
+                                class="product-card__img" loading="lazy">
+                        </div>
+                        <div class="product-card__details">
+                            <h3 class="product-card__name">Paleta de Sombras</h3>
+                            <!-- <p class="product-card__price">R$ 129,90</p>
+                            <button class="btn-add-to-order">Pedir no WhatsApp <span>&rarr;</span></button> -->
+                        </div>
+                    </article>
+
+                    <!-- Produto 4: Óleo Finalizador -->
+                    <article class="product-card" data-brand="eudora">
+                        <div class="product-card__image-holder">
+                            <span class="product-card__brand-badge">Eudora</span>
+                            <img src="images/products/oleo-finalizador.jpg" alt="Óleo Finalizador Eudora Siàge"
+                                class="product-card__img" loading="lazy">
+                        </div>
+                        <div class="product-card__details">
+                            <h3 class="product-card__name">Óleo Finalizador</h3>
+                            <!-- <p class="product-card__price">R$ 89,90</p>
+                            <button class="btn-add-to-order">Pedir no WhatsApp <span>&rarr;</span></button> -->
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+         5. REVIEWS (COMENTÁRIOS COM ÍCONES DE ASPAS E ESTRELAS)
+         ========================================== -->
+        <section id="depoimentos" class="section-testimonials">
+            <div class="section-testimonials__container">
+                <h2 class="section-title text-center">O que nossas clientes dizem</h2>
+
+                <div class="testimonials-grid">
+
+                    <!-- Depoimento 1 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__quote-icon">“”</div>
+                        <p class="testimonial-card__text">"As curadoria é impecável! Encontro todos os meus produtos de
+                            Natura e O.U.i em um só lugar com uma entrega super rápida."</p>
+                        <div class="testimonial-card__footer">
+                            <cite class="testimonial-card__author">
+                                <span class="testimonial-card__name">Mariana Silva</span>
+                                <span class="testimonial-card__handle">@marianasilva</span>
+                            </cite>
+                            <div class="testimonial-card__stars">★★★★★</div>
+                        </div>
+                    </blockquote>
+
+                    <!-- Depoimento 2 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__quote-icon">“”</div>
+                        <p class="testimonial-card__text">"O atendimento de consultoria fez toda a diferença para eu
+                            escolher a fragrância certa. Nunca mais compro sem falar com ela antes!"</p>
+                        <div class="testimonial-card__footer">
+                            <cite class="testimonial-card__author">
+                                <span class="testimonial-card__name">Carla Ferreira</span>
+                                <span class="testimonial-card__handle">@carlaferreira</span>
+                            </cite>
+                            <div class="testimonial-card__stars">★★★★★</div>
+                        </div>
+                    </blockquote>
+
+                    <!-- Depoimento 3 -->
+                    <blockquote class="testimonial-card">
+                        <div class="testimonial-card__quote-icon">“”</div>
+                        <p class="testimonial-card__text">"Produtos originais e uma apresentação de entrega que parece
+                            um presente de luxo. Ganhou uma cliente fiel."</p>
+                        <div class="testimonial-card__footer">
+                            <cite class="testimonial-card__author">
+                                <span class="testimonial-card__name">Beatriz Santos</span>
+                                <span class="testimonial-card__handle">@beatrizsantos</span>
+                            </cite>
+                            <div class="testimonial-card__stars">★★★★★</div>
+                        </div>
+                    </blockquote>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+         6. OFERTA ESPECIAL COM TIMER (CONFORME DESIGN EM SCREEN.JPG)
+         ========================================== -->
+        <!-- <section id="ofertas" class="section-special-offer">
+            <div class="section-special-offer__container">
+
+                <div class="special-offer__content">
+                    <span class="special-offer__tag">Comprar Linha</span>
+                    <h2 class="special-offer__title">Brilho de Verão: -20% em toda linha de Skincare</h2>
+                    <p class="special-offer__text">Aproveite condições exclusivas na sua primeira compra do mês. Oferta
+                        válida por tempo limitado.</p>
+                    <a href="#" class="btn btn--offer-cta">Aproveitar Agora</a>
+                </div>
+
+                <div class="special-offer__countdown" data-deadline="2026-07-31T23:59:59">
+                    <p class="countdown-label">A OFERTA ENCERRA EM</p>
+                    <div class="countdown-timer">
+                        <div class="countdown-box">
+                            <span class="countdown-box__number" data-countdown="hours">12</span>
+                            <span class="countdown-box__unit">HRS</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-box__number" data-countdown="minutes">44</span>
+                            <span class="countdown-box__unit">MIN</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-box__number" data-countdown="seconds">59</span>
+                            <span class="countdown-box__unit">SEC</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section> -->
+
+        <!-- ==========================================
+         7. QUEM TE ATENDE (SOBRE COM ÍCONE DE SELO NA IMAGEM)
+         ========================================== -->
+        <section id="sobre-mim" class="section-about">
+            <div class="section-about__container">
+
+                <div class="section-about__media">
+                    <img src="images/perfil.png" alt="Renata Valéria - Consultora de Beleza Autorizada" class="section-about__img">
+                </div>
+
+                <div class="section-about__info">
+                    <h2 class="section-about__title">Sua Consultora de Beleza</h2>
+                    <p class="section-about__text">Olá, eu sou a Renata Valéria. Minha paixão é ajudar pessoas a
+                        descobrirem
+                        sua melhor versão através de rituais de cuidado que fazem sentido para o seu dia a dia. Com mais
+                        de 10 anos de experiência com as maiores marcas do Brasil, ofereço uma consultoria personalizada
+                        que vai além da venda: é sobre bem-estar.</p>
+
+                    <!-- Canais sociais reorganizados com links -->
+                    <div class="section-about__socials">
+                        <a href="https://instagram.com" class="social-link" target="_blank">
+                            <img src="images/icons/instagram.svg" alt="Icone Instagram" class="icon-instagram">
+                        </a>
+                        <a href="https://wa.me/5500000000000" class="social-link social-link--text" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="images/icons/whatsapp.svg" alt="Icone WhatsApp" class="icon-instagram"> Falar no
+                            Whatsapp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+       8. FOOTER (RODAPÉ COM NEWSLETTER)
+       ========================================== -->
+    <footer class="site-footer">
+        <div class="site-footer__container">
+
+            <!-- Coluna 1: Sobre -->
+            <div class="footer-column">
+                <h3 class="footer-column__logo">Consultoria</h3>
+                <p class="footer-column__desc">Elevando o conceito de beleza com curadoria profissional e atendimento
+                    personalizado.</p>
+            </div>
+
+            <!-- Coluna 2: Institucional -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">INSTITUCIONAL</h4>
+                <ul class="footer-column__list">
+                    <li><a href="#" class="footer-column__link">Política de Privacidade</a></li>
+                    <li><a href="#" class="footer-column__link">Termos de Serviço</a></li>
+                    <li><a href="#" class="footer-column__link">Informações de Entrega</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Suporte -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">SUPORTE</h4>
+                <ul class="footer-column__list">
+                    <li><a href="#" class="footer-column__link">Contate-nos</a></li>
+                    <li><a href="#" class="footer-column__link">Política de Devolução</a></li>
+                    <li><a href="#" class="footer-column__link">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: Newsletter igual ao Figma -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">NEWSLETTER</h4>
+                <p class="footer-column__desc">Receba novidades e ofertas exclusivas</p>
+                <form class="newsletter-form" action="#" method="POST">
+                    <input type="email" class="newsletter-form__input" placeholder="Seu e-mail" required
+                        aria-label="Digite seu e-mail">
+                    <button type="submit" class="newsletter-form__btn" aria-label="Inscrever-se">&gt;</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Direitos Autorais e Ícones Legais inferiores -->
+        <div class="site-footer__bottom">
+            <div class="site-footer__bottom-container">
+                <p class="copyright-text">&copy; 2026 Premium Cosmetics Portfolio. All rights reserved. Professional
+                    Consultant Edition.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/553196378065" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+        <img src="images/icons/whatsapp.svg" alt="WhatsApp">
+    </a>
+
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

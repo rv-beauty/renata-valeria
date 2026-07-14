@@ -1,0 +1,537 @@
+/* ==========================================================================
+   ESTRUTURAS DE LAYOUT E SEÇÕES
+   ========================================================================== */
+
+/* Containers Base */
+.site-header__container,
+.section-hero__container,
+.section-brands__container,
+.section-showcase__container,
+.section-testimonials__container,
+.section-special-offer__container,
+.section-about__container,
+.site-footer__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+/* Espaçamento padrão entre seções */
+section {
+    padding: 4rem 0;
+}
+
+/* --- 1. Header Fixo --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 1000;
+}
+
+.site-header__container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo__img {
+    width: 140px;
+    height: auto;
+}
+
+.site-navigation__list {
+    display: flex;
+    gap: 2rem;
+}
+
+.site-navigation__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.site-navigation__link:hover {
+    color: var(--color-text-main);
+}
+
+.site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Sacola Simbolizada por CSS */
+.icon-bag::before {
+    content: "👜"; 
+    font-size: 1.25rem;
+}
+
+/* --- 2. Seção Hero --- */
+.section-hero {
+    height: 700px;
+    min-height: 600px;
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.2)), url('../images/hero-bg.png'); /* Referência à imagem de creme de screen.jpg */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    margin-top: 50px;
+}
+
+.section-hero__content {
+    max-width: 600px;
+}
+
+.section-hero__title {
+    font-family: var(--font-titles);
+    font-size: 3.5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.section-hero__subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px #000000;    
+}
+
+/* --- 3. Lista de Marcas --- */
+.section-brands {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 2.5rem 0;
+}
+
+.brand-grid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+.brand-grid__logo {
+    width: 130px;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.brand-grid__item:hover .brand-grid__logo {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* --- 4. Vitrine --- */
+.section-showcase__topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+}
+
+.section-showcase__tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.link-see-all {
+    font-size: 0.938rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-text-main);
+    padding-bottom: 2px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.section-testimonials{
+    background-color: var(--color-surface);
+}
+
+/* --- 5. Grid de Reviews --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* --- 6. Oferta Especial com Timer --- */
+.section-special-offer {
+    background-color: var(--color-primary-accent); /* Fundo marrom suave/terroso */
+}
+
+.section-special-offer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.special-offer__content {
+    max-width: 550px;
+    color: var(--color-dark-accent);
+}
+
+.special-offer__tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.special-offer__title {
+    font-family: var(--font-titles);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* Bloco do Temporizador Escuro */
+.special-offer__countdown {
+    background-color: var(--color-dark-accent);
+    color: #FFFFFF;
+    padding: 2.5rem;
+    text-align: center;
+    min-width: 360px;
+}
+
+.countdown-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-box__number {
+    font-family: var(--font-titles);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.countdown-box__unit {
+    font-size: 0.688rem;
+    margin-top: 0.5rem;
+    opacity: 0.6;
+}
+
+/* --- 7. Seção Sobre Mim --- */
+.section-about__container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.section-about__media {
+    position: relative;
+    flex-shrink: 0;
+    width: 320px;
+}
+
+.section-about__img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.section-about__badge-icon::before {
+    content: "🛡️"; /* Ícone de brasão/selo marrom do Figma */
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    background-color: var(--color-dark-accent);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.section-about__info {
+    max-width: 600px;
+}
+
+.section-about__title {
+    font-family: var(--font-titles);
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-about__text {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+.section-about__socials {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-link{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-link--text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-dark-accent);
+}
+
+/* --- 8. Rodapé Estruturado --- */
+.site-footer {
+    background-color: var(--color-surface);
+    padding: 5rem 0 1rem 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+}
+
+.site-footer__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.footer-column__logo {
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-column__desc {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.footer-column__title {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-main);
+}
+
+.footer-column__list li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column__link {
+    color: var(--color-text-muted);
+}
+
+.footer-column__link:hover {
+    color: var(--color-text-main);
+}
+
+/* Formulário Inline de Newsletter */
+.newsletter-form {
+    display: flex;
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
+    background-color: #FFFFFF;
+}
+
+.newsletter-form__input {
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.newsletter-form__btn {
+    background-color: var(--color-dark-accent);
+    color: #FFFFFF;
+    padding: 0 1.25rem;
+    cursor: pointer;
+}
+
+/* Barra inferior de direitos */
+.site-footer__bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+}
+
+.site-footer__bottom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE-FIRST)
+   ========================================================================== */
+
+/* Ajustes para telas pequenas/médias (Telas abaixo de 1024px) */
+@media (max-width: 1023px) {
+    .site-navigation {
+        display: none; /* Em uma fase com JS, isso viraria o menu hambúrguer */
+    }
+
+    .section-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .section-special-offer__container,
+    .section-about__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .special-offer__countdown {
+        min-width: 100%;
+    }
+
+    .section-about__media {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .site-footer__container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .brand-list {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   INTERACTIVE STATES & MOBILE MENU (JS SUPPORT)
+   ========================================================================== */
+
+/* Active brand filter state */
+.brand-grid__item--active .brand-grid__logo {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Hamburger toggle styles */
+.site-header__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+    padding: 0;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-main);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1023px) {
+    .site-header__toggle {
+        display: flex;
+    }
+
+    .site-navigation {
+        display: none;
+        position: absolute;
+        top: 50px; /* site-header height */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid var(--color-border);
+        padding: 1.5rem 1rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        z-index: 999;
+    }
+
+    .site-navigation.site-navigation--active {
+        display: block;
+        animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .site-navigation__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    /* Transform hamburger icon to "X" when open */
+    .site-header__toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .site-header__toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    .site-header__toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Active navigation link styling */
+.site-navigation__link.site-navigation__link--active {
+    color: var(--color-primary-accent);
+    border-bottom: 2px solid var(--color-primary-accent);
+    padding-bottom: 4px;
+}
