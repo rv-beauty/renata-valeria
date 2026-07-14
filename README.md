@@ -100,18 +100,24 @@ Para rodar em um servidor de desenvolvimento local, você pode utilizar extensõ
 
 ---
 
-## 📈 Recomendações e Melhorias Futuras
+## 📈 Melhorias Recentes Implementadas
 
-Avaliando a estrutura do site, abaixo estão listadas sugestões para levar a aplicação ao próximo nível profissional:
+As seguintes melhorias recomendadas foram adicionadas ao projeto:
+
+1. **Sacola de Compras Interativa (Carrinho)**: Implementada em JavaScript Vanilla com persistência local (`localStorage`), alteração de quantidade direta na gaveta lateral (*Cart Drawer*) e checkout de múltiplos itens formatado para envio direto no WhatsApp.
+2. **Tags Open Graph e Twitter Cards**: Adicionadas no cabeçalho do HTML para garantir pré-visualizações ricas e profissionais ao compartilhar o link em conversas de chat ou redes sociais.
+3. **Responsividade do Hero**: Ajuste de layout e espaçamento dos botões principais para dispositivos móveis, fazendo com que se empilhem perfeitamente em telas pequenas sem quebrar ou transbordar.
+
+---
+
+## 🚀 Recomendações Futuras
+
+Avaliando a estrutura atual do site, aqui estão algumas sugestões restantes para levar a aplicação ao próximo nível:
 
 1. **Otimização de Imagens**:
-   * As imagens `hero-bg.png` (930 KB) e `perfil.png` (1.4 MB) são relativamente pesadas e podem prejudicar a nota de performance do site no Google PageSpeed. 
-   * **Recomendação**: Converter essas imagens para o formato `.webp` com compressão e dimensionar corretamente. Isso pode reduzir o tamanho dos arquivos em até 80% sem perda visível de qualidade.
+   * As imagens `hero-bg.png` (930 KB) e `perfil.png` (1.4 MB) são pesadas e podem afetar a velocidade de carregamento inicial. 
+   * **Recomendação**: Converter os arquivos para `.webp` com compressão adequada (mantendo em torno de 150-200 KB) para melhorar a pontuação no Google PageSpeed Insights.
 2. **Carregamento Otimizado de Ícones**:
-   * Algumas imagens de ícones do menu ou selos poderiam ser embutidas inline como SVG direto no código HTML para diminuir o número de requisições HTTP adicionais.
-3. **Mecanismo de Sacola de Compras (*Cart*)**:
-   * Criar uma sacola de compras simples no JS, permitindo que a cliente clique em "Pedir" em múltiplos produtos e envie um único carrinho unificado para o WhatsApp da Renata.
-4. **Metatags de Redes Sociais (Open Graph)**:
-   * Adicionar tags `<meta property="og:..." />` no `<head>` para garantir que ao compartilhar o link do site no WhatsApp, Instagram ou Facebook, apareça uma miniatura bonita com o título e a logo da marca.
-5. **Configuração de Domínio e SSL**:
-   * Ao publicar a landing page, certificar-se de ativar o protocolo HTTPS (SSL) para transmitir confiança às clientes e melhorar o ranqueamento SEO no Google.
+   * Algumas imagens de ícones do menu ou selos poderiam ser embutidas inline como SVG direto no código HTML para diminuir as requisições HTTP adicionais.
+3. **Configuração de Domínio e SSL**:
+   * Certificar-se de ativar o protocolo HTTPS (SSL) no servidor de hospedagem para garantir segurança e melhorar a classificação nos motores de busca (SEO).

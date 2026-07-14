@@ -1,6 +1,6 @@
 /**
  * Renata Valéria | Curadoria Exclusiva de Beleza
- * Script de Interatividade e Integração com WhatsApp
+ * Script de Interatividade, Filtros e Sacola de Compras com WhatsApp
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. CONFIGURAÇÕES & PROPRIEDADES GLOBAIS
     // ==========================================
     const WHATSAPP_NUMBER = '553196378065'; // Formato internacional (+55 31 9637-8065)
+    
+    // Estado do Carrinho (carregado do localStorage se existir)
+    let cart = JSON.parse(localStorage.getItem('rv_cart')) || [];
     
     // Função auxiliar para gerar link do WhatsApp
     function getWhatsAppUrl(text) {
@@ -32,7 +35,187 @@ document.addEventListener('DOMContentLoaded', () => {
     updateExistingWhatsAppLinks();
 
     // ==========================================
-    // 3. EVENTOS DE COMPRA DE PRODUTOS
+    // 3. SACOLA DE COMPRAS (CARRINHO) - LÓGICA & UI
+    // ==========================================
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartToggle = document.querySelector('.site-header__cart-toggle');
+    const cartClose = document.querySelector('.cart-drawer__close');
+    const cartOverlay = document.querySelector('.cart-drawer__overlay');
+    const cartBody = document.querySelector('.cart-drawer__body');
+    const cartTotalVal = document.querySelector('.cart-drawer__total-price');
+    const cartBadge = document.querySelector('.cart-badge');
+    const checkoutBtn = document.querySelector('.btn--cart-checkout');
+
+    // Abre a sacola
+    function openCart() {
+        if (cartDrawer) {
+            cartDrawer.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Evita scroll na página de fundo
+        }
+    }
+
+    // Fecha a sacola
+    function closeCart() {
+        if (cartDrawer) {
+            cartDrawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (cartToggle) cartToggle.addEventListener('click', openCart);
+    if (cartClose) cartClose.addEventListener('click', closeCart);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+    // Salva o carrinho no localStorage e atualiza a UI
+    function saveCart() {
+        localStorage.setItem('rv_cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    // Adiciona item ao carrinho
+    function addToCart(name, brand, priceStr, imageSrc) {
+        // Converte o preço string (ex: "R$ 319,00") para Float
+        const price = parseFloat(priceStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+        
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                name,
+                brand,
+                price,
+                priceFormatted: priceStr,
+                image: imageSrc,
+                quantity: 1
+            });
+        }
+        
+        saveCart();
+        
+        // Efeito de pulso no badge do carrinho
+        if (cartBadge) {
+            cartBadge.classList.add('cart-badge--bump');
+            setTimeout(() => cartBadge.classList.remove('cart-badge--bump'), 300);
+        }
+
+        // Abre o carrinho automaticamente para feedback visual
+        setTimeout(openCart, 300);
+    }
+
+    // Altera a quantidade de um item
+    function updateQty(name, amount) {
+        const item = cart.find(item => item.name === name);
+        if (item) {
+            item.quantity += amount;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.name !== name);
+            }
+            saveCart();
+        }
+    }
+
+    // Remove item completamente
+    function removeItem(name) {
+        cart = cart.filter(item => item.name !== name);
+        saveCart();
+    }
+
+    // Formata valores numéricos para moeda brasileira
+    function formatCurrency(value) {
+        return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Atualiza a visualização do carrinho
+    function updateCartUI() {
+        if (!cartBody) return;
+        
+        // Limpa a tela
+        cartBody.innerHTML = '';
+        
+        let totalCount = 0;
+        let totalPrice = 0;
+        
+        if (cart.length === 0) {
+            cartBody.innerHTML = '<p class="cart-drawer__empty-message">Sua sacola está vazia.</p>';
+            if (checkoutBtn) checkoutBtn.style.display = 'none';
+        } else {
+            if (checkoutBtn) checkoutBtn.style.display = 'flex';
+            
+            cart.forEach(item => {
+                totalCount += item.quantity;
+                totalPrice += item.price * item.quantity;
+                
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item__image">
+                    <div class="cart-item__details">
+                        <span class="cart-item__brand">${item.brand}</span>
+                        <h4 class="cart-item__name">${item.name}</h4>
+                        <span class="cart-item__price">${formatCurrency(item.price)}</span>
+                        <div class="cart-item__controls">
+                            <button class="cart-item__qty-btn" data-action="decrease" data-name="${item.name}">-</button>
+                            <span class="cart-item__qty">${item.quantity}</span>
+                            <button class="cart-item__qty-btn" data-action="increase" data-name="${item.name}">+</button>
+                        </div>
+                    </div>
+                    <button class="cart-item__remove" data-name="${item.name}">Excluir</button>
+                `;
+                cartBody.appendChild(itemEl);
+            });
+        }
+        
+        // Atualiza badge e totais
+        if (cartBadge) cartBadge.textContent = totalCount;
+        if (cartTotalVal) cartTotalVal.textContent = formatCurrency(totalPrice);
+    }
+
+    // Eventos internos do carrinho (Adicionar/Diminuir/Remover)
+    if (cartBody) {
+        cartBody.addEventListener('click', (e) => {
+            const name = e.target.getAttribute('data-name');
+            if (!name) return;
+            
+            if (e.target.classList.contains('cart-item__qty-btn')) {
+                const action = e.target.getAttribute('data-action');
+                if (action === 'increase') {
+                    updateQty(name, 1);
+                } else if (action === 'decrease') {
+                    updateQty(name, -1);
+                }
+            } else if (e.target.classList.contains('cart-item__remove')) {
+                removeItem(name);
+            }
+        });
+    }
+
+    // Finalizar pedido no WhatsApp
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            
+            let message = 'Olá Renata! Gostaria de fazer o seguinte pedido:\n\n';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `• ${item.quantity}x ${item.name} (${item.brand}) - ${formatCurrency(subtotal)}\n`;
+            });
+            
+            message += `\n*Total do Pedido: ${formatCurrency(total)}*\n\n`;
+            message += 'Por favor, me informe sobre as condições de entrega e pagamento.';
+            
+            window.open(getWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
+        });
+    }
+
+    // Inicializa a UI do carrinho com os dados salvos
+    updateCartUI();
+
+    // ==========================================
+    // 4. INTERCEPTAR COMPRA DOS PRODUTOS DA VITRINE
     // ==========================================
     const productGrid = document.querySelector('.product-grid');
     if (productGrid) {
@@ -45,17 +228,16 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const productName = productCard.querySelector('.product-card__name')?.textContent.trim() || 'Produto';
             const productBrand = productCard.querySelector('.product-card__brand-badge')?.textContent.trim() || 'Marca';
+            const productPrice = productCard.querySelector('.product-card__price')?.textContent.trim() || 'R$ 0,00';
+            const productImage = productCard.querySelector('.product-card__img')?.getAttribute('src') || '';
             
-            const message = `Olá Renata! Gostaria de fazer o pedido do produto "${productName}" da marca ${productBrand}.`;
-            const waUrl = getWhatsAppUrl(message);
-            
-            // Abre o link do WhatsApp em uma nova aba
-            window.open(waUrl, '_blank', 'noopener,noreferrer');
+            // Adiciona ao carrinho em vez de abrir o WhatsApp diretamente
+            addToCart(productName, productBrand, productPrice, productImage);
         });
     }
 
     // ==========================================
-    // 4. EVENTOS DE CTAS ESPECIAIS (BANNER & FLUTUANTE)
+    // 5. EVENTOS DE CTAS ESPECIAIS (BANNER & FLUTUANTE)
     // ==========================================
     const offerCta = document.querySelector('.btn--offer-cta');
     if (offerCta) {
@@ -76,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 5. FILTRAGEM DE MARCAS
+    // 6. FILTRAGEM DE MARCAS
     // ==========================================
     const brandItems = document.querySelectorAll('.brand-grid__item');
     const productCards = document.querySelectorAll('.product-card');
@@ -87,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardBrand = card.getAttribute('data-brand');
             if (!brandFilter || cardBrand === brandFilter) {
                 card.style.display = 'flex';
-                // Efeito suave de fade-in
                 card.style.opacity = '0';
                 setTimeout(() => {
                     card.style.opacity = '1';
@@ -104,14 +285,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const brandFilter = item.getAttribute('data-brand-filter');
             const isActive = item.classList.contains('brand-grid__item--active');
 
-            // Limpa o estado ativo de todos os logos
             brandItems.forEach(i => i.classList.remove('brand-grid__item--active'));
 
             if (isActive) {
-                // Se clicou no que já estava ativo, desativa o filtro e mostra todos
                 filterProducts(null);
             } else {
-                // Ativa o filtro selecionado
                 item.classList.add('brand-grid__item--active');
                 filterProducts(brandFilter);
             }
@@ -127,14 +305,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 6. CONTADOR DE TEMPO (COUNTDOWN)
+    // 7. CONTADOR DE TEMPO (COUNTDOWN)
     // ==========================================
     const countdownEl = document.querySelector('.special-offer__countdown');
     if (countdownEl) {
         let deadlineStr = countdownEl.getAttribute('data-deadline');
         let deadline = new Date(deadlineStr).getTime();
         
-        // Se a data for inválida ou já tiver passado, define para 3 dias a partir de agora
         if (isNaN(deadline) || deadline <= Date.now()) {
             const mockDeadline = new Date();
             mockDeadline.setDate(mockDeadline.getDate() + 3);
@@ -166,12 +343,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (secEl) secEl.textContent = String(seconds).padStart(2, '0');
         }
 
-        updateCountdown(); // Executa imediatamente
+        updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
     }
 
     // ==========================================
-    // 7. MENU HAMBÚRGUER (MOBILE)
+    // 8. MENU HAMBÚRGUER (MOBILE)
     // ==========================================
     const menuToggle = document.querySelector('.site-header__toggle');
     const siteNavigation = document.querySelector('.site-navigation');
@@ -193,12 +370,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuToggle.addEventListener('click', toggleMenu);
 
-        // Fecha o menu ao clicar em qualquer link de navegação
         navLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
-        // Fecha o menu ao clicar fora dele
         document.addEventListener('click', (e) => {
             const isClickInsideMenu = siteNavigation.contains(e.target);
             const isClickInsideToggle = menuToggle.contains(e.target);
@@ -210,13 +385,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 8. HIGHLIGHT ATIVO DO MENU NO SCROLL (SCROLLSPY)
+    // 9. HIGHLIGHT ATIVO DO MENU NO SCROLL (SCROLLSPY)
     // ==========================================
     const sections = document.querySelectorAll('section[id]');
     
     function handleScrollSpy() {
         const scrollPos = window.scrollY || document.documentElement.scrollTop;
-        const offset = 80; // Compensação da altura do header fixo
+        const offset = 80;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop - offset;
@@ -235,14 +410,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     window.addEventListener('scroll', handleScrollSpy);
-    handleScrollSpy(); // Executa ao carregar para destacar a seção atual
+    handleScrollSpy();
 
     // ==========================================
-    // 9. FORMULÁRIO DE NEWSLETTER COM TOAST PREMIUM
+    // 10. FORMULÁRIO DE NEWSLETTER COM TOAST PREMIUM
     // ==========================================
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
-        // Injeta os estilos do Toast dinamicamente no canto inferior esquerdo (evitando o botão do WhatsApp)
         const toastStyle = document.createElement('style');
         toastStyle.innerHTML = `
             .rv-toast {

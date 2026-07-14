@@ -28,7 +28,6 @@
 .btn--hero-secondary {
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
-    margin-left: 1rem;
 }
 .btn--hero-secondary:hover {
     background-color: #FFFFFF;
@@ -228,4 +227,280 @@
         transform: scale(1.5);
         opacity: 0;
     }
+}
+
+/* --- Botão do Carrinho no Cabeçalho --- */
+.site-header__cart-toggle {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--color-text-main);
+    transition: color 0.3s ease;
+}
+
+.site-header__cart-toggle:hover {
+    color: var(--color-primary-accent);
+}
+
+.icon-cart {
+    font-size: 1.35rem;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: var(--color-primary-accent);
+    color: #FFFFFF;
+    font-size: 0.688rem;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cart-badge--bump {
+    transform: scale(1.3);
+}
+
+/* --- Sacola de Compras (Cart Drawer) --- */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    visibility: hidden;
+    transition: visibility 0.4s ease;
+}
+
+.cart-drawer[aria-hidden="false"] {
+    visibility: visible;
+}
+
+.cart-drawer__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.cart-drawer[aria-hidden="false"] .cart-drawer__overlay {
+    opacity: 1;
+}
+
+.cart-drawer__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    background-color: #FFFFFF;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-drawer[aria-hidden="false"] .cart-drawer__content {
+    transform: translateX(0);
+}
+
+.cart-drawer__header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-drawer__title {
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-dark-accent);
+}
+
+.cart-drawer__close {
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.cart-drawer__close:hover {
+    color: var(--color-text-main);
+}
+
+.cart-drawer__body {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.cart-drawer__empty-message {
+    color: var(--color-text-muted);
+    text-align: center;
+    margin: auto 0;
+    font-size: 0.938rem;
+    font-style: italic;
+}
+
+/* Item da sacola */
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+}
+
+.cart-item__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    background-color: #F4F4F5;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.cart-item__details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.cart-item__name {
+    font-size: 0.938rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.cart-item__brand {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+}
+
+.cart-item__price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-accent);
+}
+
+.cart-item__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.cart-item__qty-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.cart-item__qty-btn:hover {
+    border-color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
+    background-color: var(--color-surface);
+}
+
+.cart-item__qty {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.cart-item__remove {
+    font-size: 0.688rem;
+    color: #EF4444;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+    padding: 0.25rem;
+}
+
+.cart-item__remove:hover {
+    opacity: 0.7;
+}
+
+/* Rodapé do carrinho */
+.cart-drawer__footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+.cart-drawer__total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-main);
+}
+
+.btn--cart-checkout {
+    width: 100%;
+    background-color: var(--color-dark-accent);
+    color: #FFFFFF;
+    padding: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-shadow: none;
+}
+
+.btn--cart-checkout:hover {
+    background-color: var(--color-primary-accent);
 }

@@ -7,6 +7,20 @@
     <title>Renata Valéria | Curadoria Exclusiva de Beleza</title>
     <meta name="description"
         content="Descubra uma seleção premium das suas marcas favoritas em um único lugar. Atendimento personalizado para realçar a sua essência.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://renatavaleria.com.br">
+    <meta property="og:title" content="Renata Valéria | Curadoria Exclusiva de Beleza">
+    <meta property="og:description" content="Descubra uma seleção premium das suas marcas favoritas em um único lugar. Atendimento personalizado para realçar a sua essência.">
+    <meta property="og:image" content="images/logos/RV.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://renatavaleria.com.br">
+    <meta property="twitter:title" content="Renata Valéria | Curadoria Exclusiva de Beleza">
+    <meta property="twitter:description" content="Descubra uma seleção premium das suas marcas favoritas em um único lugar. Atendimento personalizado para realçar a sua essência.">
+    <meta property="twitter:image" content="images/logos/RV.png">
 
     <!-- Google Fonts carregando fontes equivalentes ao design -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +60,10 @@
 
             <!-- Ações do lado direito do Menu -->
             <div class="site-header__actions">
+                <button class="site-header__cart-toggle" aria-label="Ver Sacola">
+                    <!-- <span class="icon-cart">👜</span>
+                    <span class="cart-badge">0</span> -->
+                </button>
                 <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20fazer%20um%20pedido!"
                     class="btn btn--header-cta" target="_blank" rel="noopener noreferrer">Fazer Pedido</a>
                 <button class="site-header__toggle" aria-label="Menu" aria-expanded="false">
@@ -300,7 +318,7 @@
 
                     <!-- Canais sociais reorganizados com links -->
                     <div class="section-about__socials">
-                        <a href="https://instagram.com" class="social-link" target="_blank">
+                        <a href="https://www.instagram.com/renatavaleriaf15/" class="social-link" target="_blank" rel="noopener noreferrer">
                             <img src="images/icons/instagram.svg" alt="Icone Instagram" class="icon-instagram">
                         </a>
                         <a href="https://wa.me/5500000000000" class="social-link social-link--text" target="_blank"
@@ -370,6 +388,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Sacola de Compras (Cart Drawer) -->
+    <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer__overlay"></div>
+        <div class="cart-drawer__content">
+            <div class="cart-drawer__header">
+                <h3 class="cart-drawer__title">Sua Sacola</h3>
+                <button class="cart-drawer__close" aria-label="Fechar Sacola">&times;</button>
+            </div>
+            <div class="cart-drawer__body">
+                <!-- Itens da sacola inseridos via JS -->
+                <p class="cart-drawer__empty-message">Sua sacola está vazia.</p>
+            </div>
+            <div class="cart-drawer__footer">
+                <div class="cart-drawer__total">
+                    <span>Total:</span>
+                    <span class="cart-drawer__total-price">R$ 0,00</span>
+                </div>
+                <button class="btn btn--cart-checkout">Finalizar Pedido no WhatsApp</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/553196378065" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
